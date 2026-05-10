@@ -9,7 +9,7 @@ const TaskCard = ({ title, tags }) => {
       <div className="task_footer">
         <div className="tags">
           {tags.map((tag, index) => (
-            <Tag key={index} name={tag} />
+            <Tag key={index} name={tag} selected />
           ))}
         </div>
         <div className="delete">
