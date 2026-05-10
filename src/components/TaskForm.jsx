@@ -1,7 +1,21 @@
+import { useState } from "react";
 import Tag from "./Tag";
 import "./TaskForm.css";
 
 const TaskForm = () => {
+  const [task, setTask] = useState("");
+  const [status, setStatus] = useState("todo");
+
+  const handleTaskChange = (e) => {
+    setTask(e.target.value);
+  };
+
+  const handleStatusChange = (e) => {
+    setStatus(e.target.value);
+  };
+
+  console.log(task, status);
+
   return (
     <header className="app_header">
       <form>
@@ -9,6 +23,7 @@ const TaskForm = () => {
           type="text"
           placeholder="Add Task Title"
           className="task_input"
+          onChange={handleTaskChange}
         />
         <div className="task_form_bottom">
           <div>
@@ -18,7 +33,7 @@ const TaskForm = () => {
             <Tag name="React" />
           </div>
           <div>
-            <select className="task_status">
+            <select className="task_status" onChange={handleStatusChange}>
               <option value="todo">To Do</option>
               <option value="inprogress">In Progress</option>
               <option value="done">Done</option>
