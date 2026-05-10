@@ -2,14 +2,15 @@ import Tag from "./Tag";
 import "./TaskCard.css";
 import deleteIcon from "../assets/delete.png";
 
-const TaskCard = () => {
+const TaskCard = ({ title, tags }) => {
   return (
     <div className="task_card">
-      <p className="task_title">Task description goes here.</p>
+      <p className="task_title">{title}</p>
       <div className="task_footer">
         <div className="tags">
-          <Tag name="HTML" />
-          <Tag name="CSS" />
+          {tags.map((tag, index) => (
+            <Tag key={index} name={tag} />
+          ))}
         </div>
         <div className="delete">
           <img src={deleteIcon} className="delete_icon" alt="Delete task" />
