@@ -54,6 +54,11 @@ const TaskForm = ({ setTask }) => {
     e.preventDefault();
     // console.log(taskData);
     setTask((prevTask) => [...prevTask, taskData]);
+    setTaskData({
+      task: "",
+      status: "todo",
+      tags: [],
+    });
   };
 
   return (
@@ -61,10 +66,11 @@ const TaskForm = ({ setTask }) => {
       <form onSubmit={handleSubmit}>
         <input
           type="text"
+          name="task"
+          value={taskData.task}
           placeholder="Add Task Title"
           className="task_input"
           onChange={handleChange}
-          name="task"
         />
         <div className="task_form_bottom">
           <div>
@@ -87,9 +93,10 @@ const TaskForm = ({ setTask }) => {
           </div>
           <div>
             <select
+              name="status"
+              value={taskData.status}
               className="task_status"
               onChange={handleChange}
-              name="status"
             >
               <option value="todo">To Do</option>
               <option value="inprogress">In Progress</option>
