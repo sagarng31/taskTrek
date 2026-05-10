@@ -22,6 +22,10 @@ const TaskForm = () => {
     tags: [],
   });
 
+  const checkTag = (tag) => {
+    return taskData.tags.some((item) => item === tag);
+  };
+
   const selectTag = (tag) => {
     if (taskData.tags.some((item) => item === tag)) {
       const filterTags = taskData.tags.filter((item) => item !== tag);
@@ -63,10 +67,22 @@ const TaskForm = () => {
         />
         <div className="task_form_bottom">
           <div>
-            <Tag name="HTML" selectTag={selectTag} />
-            <Tag name="CSS" selectTag={selectTag} />
-            <Tag name="JavaScript" selectTag={selectTag} />
-            <Tag name="React" selectTag={selectTag} />
+            <Tag
+              name="HTML"
+              selectTag={selectTag}
+              selected={checkTag("HTML")}
+            />
+            <Tag name="CSS" selectTag={selectTag} selected={checkTag("CSS")} />
+            <Tag
+              name="JavaScript"
+              selectTag={selectTag}
+              selected={checkTag("JavaScript")}
+            />
+            <Tag
+              name="React"
+              selectTag={selectTag}
+              selected={checkTag("React")}
+            />
           </div>
           <div>
             <select
