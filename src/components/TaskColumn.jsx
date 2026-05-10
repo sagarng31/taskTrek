@@ -1,7 +1,7 @@
 import TaskCard from "./TaskCard";
 import "./TaskColumn.css";
 
-const TaskColumn = ({ title, taskIcon, tasks, status }) => {
+const TaskColumn = ({ title, taskIcon, tasks, status, handleDelete }) => {
   return (
     <section className="task_column">
       <h2 className="column_heading">
@@ -12,7 +12,13 @@ const TaskColumn = ({ title, taskIcon, tasks, status }) => {
       {tasks.map(
         (task, index) =>
           task.status === status && (
-            <TaskCard key={index} title={task.task} tags={task.tags} />
+            <TaskCard
+              key={index}
+              title={task.task}
+              tags={task.tags}
+              handleDelete={handleDelete}
+              index={index}
+            />
           ),
       )}
     </section>

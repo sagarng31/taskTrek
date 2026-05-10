@@ -8,7 +8,11 @@ import DoneIcon from "./assets/check-mark-button.png";
 
 const App = () => {
   const [tasks, setTask] = useState([]);
-  console.log("tasks", tasks);
+
+  const handleDelete = (taskIndex) => {
+    const newTasks = tasks.filter((task, index) => index !== taskIndex);
+    setTask(newTasks);
+  };
   return (
     <div className="app">
       <TaskForm setTask={setTask} />
@@ -18,18 +22,21 @@ const App = () => {
           taskIcon={ToDoIcon}
           tasks={tasks}
           status="todo"
+          handleDelete={handleDelete}
         />
         <TaskColumn
           title="In progress"
           taskIcon={InProgressIcon}
           tasks={tasks}
           status="inprogress"
+          handleDelete={handleDelete}
         />
         <TaskColumn
           title="Done"
           taskIcon={DoneIcon}
           tasks={tasks}
           status="done"
+          handleDelete={handleDelete}
         />
       </main>
     </div>
