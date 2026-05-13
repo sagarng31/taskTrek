@@ -41,7 +41,7 @@ const TaskForm = ({ setTask }) => {
       });
     }
   };
-  console.log(taskData.tags);
+  // console.log(taskData.tags);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
